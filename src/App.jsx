@@ -1,11 +1,9 @@
+import MyLayout from '@/components/layout'
 
-function App() {
-
+export default function App() {
   return (
-    <div >
-      App
-    </div>
+    <MyLayout >
+      我是App
+    </MyLayout>
   )
 }
-
-export default App

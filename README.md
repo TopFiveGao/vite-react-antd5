@@ -1,6 +1,6 @@
-## 技术选型
+# 技术选型
 
-* 构建工具 vite
+1. 构建工具 vite
 ```bash
 # 看到有人说用vue-cli创建的项目版本永远都是 3.0，对此表示怀疑，于是动手实验，
 
@@ -51,7 +51,7 @@ npm create vue
 # 疑惑清零！
 
 ```
-* 框架工具 react
+2. 语言框架 react + javascript
 
   想给 './src' 配置路径别名 '@' 的时候，发现 vue 项目中的代码 :
 ```javascript
@@ -88,3 +88,42 @@ export default defineConfig({
        vite.config.js 里面看看能不能打印，于是成功打印输出在
 
        node启动控制台！！！浏览器端不能写node端代码，记住了！
+
+3. UI框架 antd@5
+```bash
+npm i antd  @ant-design/icons -S
+```
+
+4. 页面开发
+```javascript
+/**
+ * @description 前端项目不用说, 程序入口绝对是从浏览器渲染网页html文件开始,
+ * index.html => main.js => App.jsx ，
+ * 
+ * 浏览器认识 html, 
+ * 
+ * node认识 main.js,
+ * 
+ * node安装的react相关的依赖库认识 App.jsx,
+ * 
+ * 而模块化开发一般是让入口文件(如 App.jsx )尽量精简，增强可读性，在这个原则下，
+ * 
+ * App.jsx 应该只保留几行代码, 
+ * 
+ * 当项目添加了路由，
+ * 
+ * 比较优雅的做法是把路由也封装成一个组件来使用, 
+ * 
+ * 而项目添加了ui组件库后，
+ * 
+ * 实践过程中发现在页面中写 ui组件部分的代码，将会使自身的文件十分杂乱, 
+ * 
+ * 所以我们应该把这些杂乱的部分也封装成一层组件以使 App.jsx 精简,
+ * 
+ * 再结合前端开发的本质-网页开发, 我们应该在网页设计的时候先设计其布局,
+ * 
+ * 所以我们在使用任何ui组件库的时候, 如 antd 都应该先做好布局层组件的封装。
+ * 
+ * 即在 App.jsx 中引入自己封装的 Layout 组件即可。
+ */
+```
