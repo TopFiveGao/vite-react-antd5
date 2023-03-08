@@ -2,7 +2,7 @@
  * @Author       : topfivegao
  * @Date         : 2023-03-07 19:17:03
  * @FilePath     : /vite-react-antd5/src/components/layout/index.jsx
- * @LastEditTime : 2023-03-07 22:51:42
+ * @LastEditTime : 2023-03-09 01:52:57
  * @Description  : 有空一起吃个饭啊!	微信联系 treeshaking666
  * 
  * Copyright (c) 2023 by topfivegao, All Rights Reserved. 
@@ -18,12 +18,15 @@ import {
 } from '@ant-design/icons';
 import { Layout, Menu, theme } from 'antd';
 import React, { useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import './index.css'
 import logo from '@/assets/vite-react-antd5.png'
 
 const { Header, Sider, Content } = Layout;
 const MyLayout = ({ children }) => {
     const [collapsed, setCollapsed] = useState(false);
+    const navigate = useNavigate()
+    const loc = useLocation()
     const {
         token: { colorBgContainer },
     } = theme.useToken();
@@ -34,7 +37,7 @@ const MyLayout = ({ children }) => {
                 collapsible
                 collapsed={collapsed}
             >
-                <img src={logo} style={{ borderRadius: '20px', width: '50%', display: 'block', margin: '10px auto' }} />
+                <img src={logo} style={{ borderRadius: '20%', width: '50%', display: 'block', margin: '10px auto' }} />
                 <Menu
                     theme="dark"
                     mode="inline"
@@ -46,57 +49,61 @@ const MyLayout = ({ children }) => {
                             label: '学生管理',
                             children: [
                                 {
-                                    key: '1',
+                                    key: '/students/list',
                                     icon: <OrderedListOutlined />,
                                     label: '学生列表',
                                 },
                                 {
-                                    key: '11',
+                                    key: '/students/types',
                                     icon: <OrderedListOutlined />,
                                     label: '学生分类',
                                 }
                             ]
                         },
                         {
-                            key: '2',
+                            key: '/classes',
                             icon: <TrophyOutlined />,
                             label: '班级管理',
                             children: [
                                 {
-                                    key: '21',
+                                    key: '/classes/list',
                                     icon: <OrderedListOutlined />,
                                     label: '班级列表',
                                 },
                                 {
-                                    key: '211',
+                                    key: '/classes/members',
                                     icon: <OrderedListOutlined />,
                                     label: '班级人员',
                                 }
                             ]
                         },
                         {
-                            key: '3',
+                            key: '/courses',
                             icon: <ProfileOutlined />,
                             label: '课程管理',
                             children: [
                                 {
-                                    key: '31',
+                                    key: '/courses/list',
                                     icon: <OrderedListOutlined />,
                                     label: '课程列表',
                                 },
                                 {
-                                    key: '311',
+                                    key: '/courses/classtime',
                                     icon: <OrderedListOutlined />,
                                     label: '课程时间',
                                 }
                             ]
                         },
                         {
-                            key: '4',
+                            key: '/todos',
                             icon: <HeartOutlined />,
                             label: '预留菜单',
                         }
                     ]}
+                    onClick={({ key }) => {
+                        navigate('/admin' + key)
+
+                    }}
                 />
             </Sider>
             <Layout className="site-layout">

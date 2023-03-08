@@ -127,3 +127,68 @@ npm i antd  @ant-design/icons -S
  * 即在 App.jsx 中引入自己封装的 Layout 组件即可。
  */
 ```
+
+5. 值得关注的地方
+### 1. router 写法
+```javascript
+// 路由设计：仔细看这两种不同的 react-router-dom 的写法
+
+// 第一种写法：这种路由设计的好处是，保证网站url有较强的容错性，能让用户先打开网站首页路由
+// router.js 
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import App from '@/App'
+
+
+export default function BaseRouter() {
+
+  return (<BrowserRouter>
+    <Routes>
+      <Route path='/admin/*' element={<App />}></Route>
+    </Routes>
+  </BrowserRouter>)
+}
+
+// app.js
+import {Routes, Route} from 'react-router=dom'
+import MyLayout from '@/components/layout' 
+import PageDemo from '@/pages/demo'
+
+export default function App(){
+
+  return (<MyLayout>
+    <Routes>
+      <Route path='test' element={<PageDemo />}></Route>
+    </Routes>
+  </MyLayout>)
+}
+// 第二种写法
+// App.js
+import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import App from '@/pages/App'
+
+export default function App (){
+  return (<BrowserRouter>
+    <Routes>
+      <Route path='/' element={ <App /> }></Route>
+    </Routes>
+  </BrowserRouter>)
+}
+
+// 对于第一种写法，刚开始没看仔细，以为是这样的结构（注意，以下写法是错误示范！！！）
+
+<BrowserRouter>
+  <Routes>
+      <Route path='/' element={ <App /> }>
+        
+        <Routes>
+          <Route path='' element={ <App /> }></Route>
+        </Routes>
+      </Route>
+  </Routes>
+</BrowserRouter>
+
+// 因为自己实验过，这样写会报错，有点印象。于是再仔细看才发现了问题。
+// 于是就思考它为啥会这么设计路由，
+// 而不是把路由 Routes Route 完全封装在一个完整的文件里，
+// 因为这样可以保证只要匹配第一层的路由，网页就有内容展示！这可能就是暗藏的一个需求点！
+```

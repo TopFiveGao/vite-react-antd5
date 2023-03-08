@@ -9,6 +9,6 @@
  */
 export default function Home(){
     return <>
-        home
+        student/list
     </>
 }

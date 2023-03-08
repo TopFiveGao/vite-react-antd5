@@ -7,15 +7,13 @@
  * 
  * @Copyright (c) 2023 by topfivegao, All Rights Reserved. 
  */
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, HashRouter,Routes, Route } from 'react-router-dom'
 import App from '@/App'
-import Students from '@/pages/students/home'
 
 export default function Router() {
     return <BrowserRouter>
         <Routes>
-            <Route path='/' element={<App />}></Route>
-            <Route path='/students' element={<Students />}></Route>
+            <Route path='/admin/*' element={<App />}></Route>
         </Routes>
     </BrowserRouter>
 }
