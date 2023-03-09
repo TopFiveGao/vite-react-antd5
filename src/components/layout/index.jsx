@@ -2,7 +2,7 @@
  * @Author       : topfivegao
  * @Date         : 2023-03-07 19:17:03
  * @FilePath     : /vite-react-antd5/src/components/layout/index.jsx
- * @LastEditTime : 2023-03-09 01:52:57
+ * @LastEditTime : 2023-03-09 16:17:39
  * @Description  : 有空一起吃个饭啊!	微信联系 treeshaking666
  * 
  * Copyright (c) 2023 by topfivegao, All Rights Reserved. 
@@ -37,7 +37,12 @@ const MyLayout = ({ children }) => {
                 collapsible
                 collapsed={collapsed}
             >
-                <img src={logo} style={{ borderRadius: '20%', width: '50%', display: 'block', margin: '10px auto' }} />
+                <img src={logo}
+                    style={{ borderRadius: '100%', width: '100px', display: 'block', margin: '10px auto' }}
+                    onClick={() => {
+                        navigate('/')
+                    }}
+                />
                 <Menu
                     theme="dark"
                     mode="inline"
@@ -101,7 +106,7 @@ const MyLayout = ({ children }) => {
                         }
                     ]}
                     onClick={({ key }) => {
-                        navigate('/admin' + key)
+                        navigate(key)
 
                     }}
                 />
