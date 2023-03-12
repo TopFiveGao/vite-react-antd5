@@ -7,6 +7,7 @@ import ClassesMembers from '@/pages/classes/members'
 import CoursesList from '@/pages/courses/home'
 import CoursesTime from '@/pages/courses/time'
 import Todos from '@/pages/todos'
+import Profile from './pages/profile'
 
 
 export default function App() {
@@ -26,6 +27,7 @@ export default function App() {
             <Route path='/courses/list' element={<CoursesList />}></Route>
             <Route path='/courses/classtime' element={<CoursesTime />}></Route>
             <Route path='/todos' element={<Todos />}></Route>
+            <Route path='/profile' element={<Profile />}></Route>
           </Routes>
       }
     </MyLayout>

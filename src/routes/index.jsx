@@ -9,11 +9,13 @@
  */
 import { BrowserRouter, HashRouter, Routes, Route } from 'react-router-dom'
 import App from '@/App'
+import Login from '@/pages/login'
 
 export default function Router() {
     return <BrowserRouter>
         <Routes>
             <Route path='/*' element={<App />}></Route>
+            <Route path='/login' element={<Login />}></Route>
         </Routes>
     </BrowserRouter>
 }
